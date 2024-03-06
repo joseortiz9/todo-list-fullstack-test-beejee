@@ -13,7 +13,9 @@
       "check": "pnpm lint && pnpm ts:check",
       "build:lib": "tsup src/index.ts --format cjs"
    },
-   "dependencies": {},
+   "dependencies": {
+      "zod": "^3.22.4"
+   },
    "devDependencies": {
       "@todo-list-fullstack-test/eslint-config": "workspace:*",
       "@todo-list-fullstack-test/tsconfig": "workspace:*",

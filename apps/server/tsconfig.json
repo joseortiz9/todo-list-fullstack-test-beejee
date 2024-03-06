@@ -5,6 +5,7 @@
       "baseUrl": ".",
       "paths": {
          "@/*": ["./src/*"],
+         "@/sharedTypes": ["../../@todo-list-fullstack-test/shared-ts"]
       }
    },
    "include": [

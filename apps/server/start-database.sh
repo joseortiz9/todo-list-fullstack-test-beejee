@@ -2,6 +2,7 @@
 # Use this script to start a docker container for a local development database
 
 DB_CONTAINER_NAME="todo-list-test-postgres"
+DB_NAME="todo-list-test-db"
 
 if [ "$(docker ps -q -f name=$DB_CONTAINER_NAME)" ]; then
   docker start $DB_CONTAINER_NAME
@@ -23,6 +24,6 @@ if [ "$DB_PASSWORD" = "password" ]; then
   sed -i -e "s#:password@#:$DB_PASSWORD@#" .env
 fi
 
-docker run --name $DB_CONTAINER_NAME -e POSTGRES_PASSWORD=$DB_PASSWORD -e POSTGRES_DB=t3-app-test -d -p 5432:5432 docker.io/postgres
+docker run --name $DB_CONTAINER_NAME -e POSTGRES_PASSWORD=$DB_PASSWORD -e POSTGRES_DB=$DB_NAME -d -p 5432:5432 docker.io/postgres
 
 echo "DB container was successfully created"

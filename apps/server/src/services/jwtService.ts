@@ -1,10 +1,14 @@
-import { type UserSessionData } from '@todo-list-fullstack-test/shared-ts';
 import jwt from 'jsonwebtoken';
+
+import { type UserSessionData } from '@todo-list-fullstack-test/shared-ts';
 
 import { JWT_SECRET } from '@/env';
 
-export class AuthService {
-  static async parseSessionByJwt(token?: string): Promise<UserSessionData | null> {
+export class JwtService {
+  static async generateToken(data: UserSessionData): Promise<string> {
+    return jwt.sign(data, JWT_SECRET, { expiresIn: '7d' });
+  }
+  static async parseSessionByToken(token?: string): Promise<UserSessionData | null> {
     if (!token) {
       return null;
     }

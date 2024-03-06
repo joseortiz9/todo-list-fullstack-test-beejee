@@ -6,7 +6,8 @@
       "baseUrl": ".",
       "paths": {
          "@/*": ["./src/*"],
-         "@/ui/*": ["../../@todo-list-fullstack-test/ui/src/*"]
+         "@/ui": ["../../@todo-list-fullstack-test/ui"],
+         "@/sharedTypes": ["../../@todo-list-fullstack-test/shared-ts"]
       }
    },
    "include": ["src", "vite.config.ts"],

@@ -9,6 +9,8 @@ const config = {
    "importOrder": [
       "<THIRD_PARTY_MODULES>",
 
+      "^@todo-list-fullstack-test(.*)",
+
       "^@/(.*)",
 
       "^[./]"

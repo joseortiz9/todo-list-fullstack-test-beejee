@@ -1,10 +1,5 @@
 import ReactDOM from 'react-dom/client';
 
-import { App } from '@/components/core/App';
-import { Providers } from '@/components/shared';
+import { App } from './App';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <Providers>
-    <App />
-  </Providers>,
-);
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<App />);
