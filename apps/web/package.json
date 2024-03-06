@@ -1,0 +1,48 @@
+{
+   "name": "@todo-list-fullstack-test/web",
+   "private": true,
+   "version": "1.0.0",
+   "type": "module",
+   "scripts": {
+      "dev": "vite",
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix",
+      "ts:check": "tsc -b",
+      "stylelint": "stylelint src/**/*.{ts,tsx,scss}",
+      "check": "pnpm lint && pnpm ts:check && pnpm stylelint",
+      "build": "pnpm ts:check && vite build"
+   },
+   "dependencies": {
+      "@todo-list-fullstack-test/ui": "workspace:*",
+      "@tanstack/react-query": "^4.36.1",
+      "@trpc/client": "^10.45.1",
+      "@trpc/react-query": "^10.45.1",
+      "@trpc/server": "^10.45.1",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "styled-components": "^5.3.11"
+   },
+   "devDependencies": {
+      "@testing-library/jest-dom": "^5.17.0",
+      "@testing-library/react": "^14.2.1",
+      "@types/testing-library__jest-dom": "^5.14.9",
+      "@types/jest": "^29.5.12",
+      "@types/react": "^18.2.63",
+      "@types/react-dom": "^18.2.19",
+      "@types/styled-components": "^5.1.34",
+      "@vitejs/plugin-react": "^3.1.0",
+      "sass": "^1.71.1",
+      "envalid": "^7.3.1",
+      "@tanstack/router": "0.0.1-beta.139",
+      "postcss-styled-syntax": "^0.4.0",
+      "stylelint": "^15.10.2",
+      "jsdom": "^22.1.0",
+      "typescript": "^5.3.3",
+      "vite": "^4.3.9",
+      "vite-tsconfig-paths": "^4.3.1",
+      "@todo-list-fullstack-test/tsconfig": "workspace:*",
+      "@todo-list-fullstack-test/eslint-config": "workspace:*",
+      "@todo-list-fullstack-test/shared-ts": "workspace:*",
+      "@trivago/prettier-plugin-sort-imports": "^4.3.0"
+   }
+}

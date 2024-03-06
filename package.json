@@ -1,0 +1,36 @@
+{
+   "name": "todo-list-fullstack-test",
+   "version": "1.0.0",
+   "private": true,
+   "packageManager": "pnpm@8.6.5",
+   "engines": {
+      "node": "18.x"
+   },
+   "scripts": {
+      "start": "pnpm -F @todo-list-fullstack-test/server start",
+      "pm2:start": "pnpm -F @todo-list-fullstack-test/server pm2:start",
+      "pm2:delete": "pnpm -F @todo-list-fullstack-test/server pm2:delete",
+      "pm2:logs": "pnpm -F @todo-list-fullstack-test/server pm2:logs",
+      "dev": "turbo run dev",
+      "lint": "turbo run lint",
+      "lint:fix": "turbo run lint:fix",
+      "stylelint": "turbo run stylelint",
+      "ts:check": "turbo run ts:check",
+      "check": "turbo run check",
+      "build": "turbo run build",
+      "build:lib": "turbo run build:lib",
+      "postinstall": "pnpm build:lib && cd apps/server && pnpm db:init"
+   },
+   "devDependencies": {
+      "@todo-list-fullstack-test/eslint-config": "workspace:*",
+      "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+      "@types/glob": "^8.1.0",
+      "eslint": "^8.57.0",
+      "glob": "^10.3.10",
+      "stylelint": "^15.10.2",
+      "ts-node": "^10.9.2",
+      "turbo": "^1.12.4",
+      "typescript": "^5.3.3",
+      "@swc/core": "^1.4.2"
+   }
+}

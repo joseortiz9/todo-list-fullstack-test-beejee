@@ -1,0 +1,29 @@
+{
+   "name": "@todo-list-fullstack-test/ui",
+   "version": "1.0.0",
+   "main": "src/index.tsx",
+   "types": "src/index.tsx",
+   "license": "MIT",
+   "scripts": {
+      "dev": "echo 'Not implemented'",
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix",
+      "ts:check": "tsc -b",
+      "stylelint": "stylelint src/**/*.{ts,tsx,scss}",
+      "check": "pnpm lint && pnpm ts:check && pnpm stylelint"
+   },
+   "dependencies": {
+      "styled-components": "^5.3.11"
+   },
+   "devDependencies": {
+      "@types/react": "^18.2.63",
+      "@types/react-dom": "^18.2.19",
+      "eslint": "^8.57.0",
+      "@todo-list-fullstack-test/eslint-config": "workspace:*",
+      "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+      "react": "^18.2.0",
+      "@todo-list-fullstack-test/tsconfig": "workspace:*",
+      "typescript": "^5.3.3",
+      "@types/styled-components": "^5.1.34"
+   }
+}

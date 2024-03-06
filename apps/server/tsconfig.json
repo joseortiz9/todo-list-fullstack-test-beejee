@@ -1,0 +1,18 @@
+{
+   "extends": "@todo-list-fullstack-test/tsconfig/node.json",
+   "compilerOptions": {
+      "outDir": "dist",
+      "baseUrl": ".",
+      "paths": {
+         "@/*": ["./src/*"],
+      }
+   },
+   "include": [
+      "src"
+   ],
+   "references": [
+      {
+         "path": "../../@todo-list-fullstack-test/shared-ts/tsconfig.json"
+      }
+   ]
+}

@@ -1,0 +1,1 @@
+{ "extends": ["@todo-list-fullstack-test/eslint-config/react"] }

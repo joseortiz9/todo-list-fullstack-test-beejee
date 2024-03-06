@@ -1,0 +1,24 @@
+{
+   "extends": "@todo-list-fullstack-test/tsconfig/react.json",
+   "compilerOptions": {
+      "composite": false,
+      "outDir": "dist",
+      "baseUrl": ".",
+      "paths": {
+         "@/*": ["./src/*"],
+         "@/ui/*": ["../../@todo-list-fullstack-test/ui/src/*"]
+      }
+   },
+   "include": ["src", "vite.config.ts"],
+   "references": [
+      {
+         "path": "../server"
+      },
+      {
+         "path": "../../@todo-list-fullstack-test/ui/tsconfig.json"
+      },
+      {
+         "path": "../../@todo-list-fullstack-test/shared-ts/tsconfig.json"
+      }
+   ]
+}
