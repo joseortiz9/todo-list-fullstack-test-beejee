@@ -1,6 +1,6 @@
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 
-import { useAuthSession } from '@/hooks';
+import { useAuthSession, useAuthSessionRefresher } from '@/hooks';
 
 import { Providers } from './providers';
 import { routeTree } from './routeTree.gen';
@@ -13,7 +13,9 @@ const router = createRouter({
 });
 
 const Router = () => {
+  useAuthSessionRefresher();
   const session = useAuthSession((state) => state.session);
+
   return <RouterProvider router={router} context={{ session }} />;
 };
 

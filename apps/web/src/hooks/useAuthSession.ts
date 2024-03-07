@@ -1,4 +1,3 @@
-import { shared } from 'use-broadcast-ts';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -12,34 +11,31 @@ type AuthSessionProps = {
 };
 
 export const useAuthSession = create<AuthSessionProps>()(
-  shared(
-    persist(
-      (set) => ({
-        session: null,
-        token: null,
-        setSession: (session, token) => {
-          set({
-            session,
-            token,
-          });
-        },
-        logout: () => {
-          set({
-            session: null,
-            token: null,
-          });
-        },
-      }),
-      {
-        name: 'auth-session',
-        storage: createJSONStorage(() => localStorage),
-        partialize: (state) => ({
-          session: state.session,
-          token: state.token,
-        }),
+  persist(
+    (set) => ({
+      session: null,
+      token: null,
+      setSession: (session, token) => {
+        set({
+          session,
+          token,
+        });
       },
-    ),
-    { name: 'BroadcastKeyword' },
+      logout: () => {
+        set({
+          session: null,
+          token: null,
+        });
+      },
+    }),
+    {
+      name: 'auth-session',
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        session: state.session,
+        token: state.token,
+      }),
+    },
   ),
 );
 
