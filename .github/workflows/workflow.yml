@@ -41,11 +41,3 @@ jobs:
 
          - name: Run pnpm check
            run: pnpm check
-
-         - name: Start server background process (for e2e tests)
-           run: pnpm pm2:start
-
-        # Tests, lint and ts checks
-
-         - name: Stop server background process
-           run: pnpm pm2:delete

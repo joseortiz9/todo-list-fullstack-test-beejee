@@ -1,5 +1,6 @@
-import { z } from 'zod'
-import { createPaginatedSchema } from './paginationDto'
+import { z } from 'zod';
+
+import { createPaginatedSchema } from './paginationDto';
 
 export const task = z.object({
   id: z.number(),
@@ -45,13 +46,13 @@ export const tasksOrderBy = z.nativeEnum(TasksOrderBy);
 export const tasksOrderDirection = z.nativeEnum(OrderDirection);
 
 export const allTasksInput = z.intersection(
-  z.object({
-    page: z.number().default(1).catch(1),
-  }),
-  z.object({
-    sortType: tasksOrderBy.optional(),
-    sortOrder: tasksOrderDirection.optional(),
-  }).partial()
+  z.object({ page: z.number().default(1).catch(1) }),
+  z
+    .object({
+      sortType: tasksOrderBy.optional(),
+      sortOrder: tasksOrderDirection.optional(),
+    })
+    .partial(),
 );
 
 export type AllTasksInput = z.infer<typeof allTasksInput>;
