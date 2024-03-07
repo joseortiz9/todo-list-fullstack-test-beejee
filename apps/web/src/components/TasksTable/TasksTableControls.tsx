@@ -43,7 +43,7 @@ export const TasksTableControls = ({
           </option>
         ))}
       </Select>
-      <Flex>
+      <Flex gap={1}>
         <Button borderRadius="full" isDisabled={!onPrevPage} onClick={onPrevPage}>
           <ArrowBackIcon />
         </Button>

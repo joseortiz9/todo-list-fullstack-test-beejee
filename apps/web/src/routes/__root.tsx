@@ -1,5 +1,7 @@
 import { Outlet, createRootRouteWithContext } from '@tanstack/react-router';
 
+import type { UserSessionData } from '@/sharedTypes';
+
 import { MainLayout } from '@/layouts';
 
 const RootComponent = () => {
@@ -12,4 +14,8 @@ const RootComponent = () => {
   );
 };
 
-export const Route = createRootRouteWithContext<object>()({ component: RootComponent });
+type RootRouteContext = {
+  session: UserSessionData | null;
+};
+
+export const Route = createRootRouteWithContext<RootRouteContext>()({ component: RootComponent });
