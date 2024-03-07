@@ -1,11 +1,11 @@
-import { Button, Flex, HStack, Select, Text } from '@/ui';
+import { Button, Flex, Stack, Text } from '@/ui';
 
 import { CardContainer } from '@/components/CardContainer';
 import { CreateTaskModal } from '@/components/CreateTaskModal';
-import { TasksTable } from '@/components/TasksTable';
+import { TasksTable, TasksTableControls } from '@/components/TasksTable';
 import { useAllTasksFilters, useModal } from '@/hooks';
 import { trpc } from '@/lib/trpc';
-import { type SearchParamsSchema, sortingDirectionItems, sortingItems } from '@/utils/filtersHelper';
+import { type SearchParamsSchema } from '@/utils/filtersHelper';
 
 type HomeProps = {
   searchParams: SearchParamsSchema;
@@ -13,37 +13,35 @@ type HomeProps = {
 
 export const Home = ({ searchParams }: HomeProps) => {
   const { openModal } = useModal();
+  const { page, sortType, sortOrder, onChangeSortType, onChangeSortOrder, onPrevPageClick, onNextPageClick } =
+    useAllTasksFilters({ searchParams });
+  const { data } = trpc.tasks.all.useQuery({ page, sortType, sortOrder });
 
-  const { sortType, sortOrder, onChangeSortType, onChangeSortOrder } = useAllTasksFilters({ searchParams });
-  const { data } = trpc.tasks.all.useQuery({ sortType, sortOrder });
+  const handleCreateTask = () => {
+    openModal(CreateTaskModal, {});
+  };
 
   return (
     <>
       <CardContainer minW={{ base: 'full', xl: '4xl' }}>
-        <HStack mb={4} justifyContent="space-between" w="full">
-          <Flex alignItems="center" gap={4}>
+        <Stack w="full" mb={4} direction={{ base: 'column', lg: 'row' }} justifyContent={{ lg: 'space-between' }}>
+          <Flex alignItems="center" gap={4} justifyContent={{ base: 'space-between', lg: 'flex-start' }}>
             <Text fontWeight="700" fontSize="xl">
               ToDo List
             </Text>
-            <Button onClick={() => openModal(CreateTaskModal, {})}>+ Add</Button>
+            <Button onClick={handleCreateTask}>+ Add</Button>
           </Flex>
-          <Flex gap={4}>
-            <Select placeholder="Sort By" value={sortType} onChange={onChangeSortType}>
-              {sortingItems.map((item) => (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              ))}
-            </Select>
-            <Select placeholder="Sort Order" value={sortOrder} onChange={onChangeSortOrder}>
-              {sortingDirectionItems.map((item) => (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              ))}
-            </Select>
-          </Flex>
-        </HStack>
+          <TasksTableControls
+            sortType={sortType}
+            sortOrder={sortOrder}
+            onChangeSortOrder={onChangeSortOrder}
+            onChangeSortType={onChangeSortType}
+            currentPage={data?.meta.currentPage}
+            totalPages={data?.meta.lastPage}
+            onPrevPage={data?.meta.prev ? onPrevPageClick : undefined}
+            onNextPage={data?.meta.next ? onNextPageClick : undefined}
+          />
+        </Stack>
         <TasksTable data={data?.data || []} />
       </CardContainer>
     </>

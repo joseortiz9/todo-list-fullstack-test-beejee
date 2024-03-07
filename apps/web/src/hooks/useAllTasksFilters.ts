@@ -1,5 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
-import { type ChangeEvent, useCallback, useState } from 'react';
+import { type ChangeEvent, useMemo, useState } from 'react';
 
 import { type OrderDirection, type TasksOrderBy } from '@/sharedTypes';
 
@@ -11,34 +11,39 @@ type UseAllTasksFiltersProps = {
 
 export const useAllTasksFilters = ({ searchParams }: UseAllTasksFiltersProps) => {
   const navigate = useNavigate<'/'>();
-  const [page, setPage] = useState(searchParams.page);
-  const [sortType, setSortType] = useState(searchParams.sortType);
-  const [sortOrder, setSortOrder] = useState(searchParams.sortOrder);
+  const [params, setParams] = useState<SearchParamsSchema>(searchParams);
 
-  const onChangeSortType = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      const value = (event.target.value as TasksOrderBy) || undefined;
-      navigate({ search: (prev) => ({ ...prev, page: 1, sortType: value }) });
-      setSortType(value);
-      setPage(1);
-    },
-    [navigate],
-  );
+  const callbacks = useMemo(
+    () => ({
+      onChangeSortType: (event: ChangeEvent<HTMLSelectElement>) => {
+        const value = (event.target.value as TasksOrderBy) || undefined;
+        navigate({ search: (prev) => ({ ...prev, page: 1, sortType: value }) });
+        setParams((prev) => ({ ...prev, page: 1, sortType: value }));
+      },
 
-  const onChangeSortOrder = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      const value = (event.target.value as OrderDirection) || undefined;
-      navigate({ search: (prev) => ({ ...prev, page: 1, sortOrder: value }) });
-      setSortOrder(value);
-      setPage(1);
-    },
+      onChangeSortOrder: (event: ChangeEvent<HTMLSelectElement>) => {
+        const value = (event.target.value as OrderDirection) || undefined;
+        navigate({ search: (prev) => ({ ...prev, page: 1, sortOrder: value }) });
+        setParams((prev) => ({ ...prev, page: 1, sortOrder: value }));
+      },
+
+      onPrevPageClick: () => {
+        navigate({ search: (prev) => ({ ...prev, page: prev.page - 1 }) });
+        setParams((prev) => ({ ...prev, page: prev.page - 1 }));
+      },
+
+      onNextPageClick: () => {
+        navigate({ search: (prev) => ({ ...prev, page: prev.page + 1 }) });
+        setParams((prev) => ({ ...prev, page: prev.page + 1 }));
+      },
+    }),
     [navigate],
   );
 
   return {
-    sortType,
-    sortOrder,
-    onChangeSortType,
-    onChangeSortOrder,
+    page: params.page,
+    sortType: params.sortType,
+    sortOrder: params.sortOrder,
+    ...callbacks,
   };
 };
