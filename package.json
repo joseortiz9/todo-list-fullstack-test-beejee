@@ -18,8 +18,7 @@
       "ts:check": "turbo run ts:check",
       "check": "turbo run check",
       "build": "turbo run build",
-      "build:lib": "turbo run build:lib",
-      "postinstall": "pnpm build:lib && cd apps/server && pnpm db:init"
+      "build:lib": "turbo run build:lib"
    },
    "devDependencies": {
       "@todo-list-fullstack-test/eslint-config": "workspace:*",
