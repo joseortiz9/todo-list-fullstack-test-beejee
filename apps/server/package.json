@@ -3,6 +3,7 @@
    "version": "1.0.0",
    "private": true,
    "scripts": {
+      "prepare": "ts-patch install -s",
       "prisma:init": "rm -rf .prisma && prisma generate",
       "dev": "pnpm prisma:init && cross-env NODE_ENV=development nodemon ./src/server.ts",
       "start": "pnpm prisma:init && cross-env NODE_ENV=production node dist/src/server.js",
@@ -56,7 +57,9 @@
       "nodemon": "^2.0.22",
       "pm2": "^5.3.1",
       "ts-node": "^10.9.2",
+      "ts-patch": "^3.1.2",
       "tsconfig-paths": "^4.2.0",
-      "typescript": "^5.3.3"
+      "typescript": "^5.3.3",
+      "typescript-transform-paths": "^3.4.7"
    }
 }

@@ -1,10 +1,11 @@
 import { createTRPCProxyClient, httpLink } from '@trpc/client';
-import superjson from 'superjson';
 
-import { type AppRouter } from '@/routers/_app';
+import { type AppRouter } from '@/routers/root';
 import { HttpService } from '@/services';
 
 export const client = createTRPCProxyClient<AppRouter>({
-  transformer: superjson,
+  // Recommendation by the TRPC team, but there is a bug in this library
+  // with ES modules exports, https://github.com/blitz-js/superjson/issues/268
+  // transformer: superjson,
   links: [httpLink({ url: `${HttpService.serverUrl}/trpc` })],
 });

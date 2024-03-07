@@ -28,7 +28,7 @@ export const Header = () => {
           <Text fontWeight="700">ToDo List Test</Text>
           <HStack spacing={3}>
             <Button onClick={toggleColorMode}>{colorMode === 'light' ? <MoonIcon /> : <SunIcon />}</Button>
-            <Link to="/">
+            <Link to="/" search={{ page: 1 }}>
               <Button>Home</Button>
             </Link>
             {hasActiveSession ? (

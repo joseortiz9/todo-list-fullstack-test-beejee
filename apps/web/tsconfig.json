@@ -7,7 +7,7 @@
       "paths": {
          "@/*": ["./src/*"],
          "@/ui": ["../../@todo-list-fullstack-test/ui"],
-         "@/sharedTypes": ["../../@todo-list-fullstack-test/shared-ts"]
+         "@/sharedTypes": ["../../@todo-list-fullstack-test/shared-ts/src/index"]
       }
    },
    "include": ["src", "vite.config.ts"],

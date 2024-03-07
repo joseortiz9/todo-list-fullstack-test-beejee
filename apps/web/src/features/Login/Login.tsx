@@ -24,7 +24,7 @@ export const Login = () => {
     onSuccess: (data) => {
       setSession(data.session, data.token);
       toast.success({ title: 'Login successful' });
-      navigate({ to: '/' });
+      navigate({ to: '/', search: { page: 1 } });
     },
     onError: (error) => {
       toast.error({ title: error.message });
