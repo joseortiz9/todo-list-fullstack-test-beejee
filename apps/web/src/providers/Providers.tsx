@@ -2,12 +2,15 @@ import { type PropsWithChildren } from 'react';
 
 import { ThemeProvider } from '@/ui';
 
+import { ModalContextProvider } from './ModalContext';
 import { TRPCReactProvider } from './TRPCReactProvider';
 
 export const Providers = ({ children }: PropsWithChildren) => {
   return (
     <TRPCReactProvider>
-      <ThemeProvider>{children}</ThemeProvider>
+      <ThemeProvider>
+        <ModalContextProvider>{children}</ModalContextProvider>
+      </ThemeProvider>
     </TRPCReactProvider>
   );
 };

@@ -26,6 +26,7 @@ model Task {
   email     String
   content   String
   completed Boolean  @default(false)
+  updated   Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   author    User?    @relation(fields: [authorId], references: [id])

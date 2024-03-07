@@ -4,7 +4,9 @@ import { type AxiosError } from 'axios';
 
 import { useAuthSession } from '@/hooks';
 
-import type { AppRouter } from '../../../server/src/routers/root';
+import type { AppRouter, RouterOutput as RouterOutputServer } from '../../../server/src/routers/root';
+
+export type RouterOutput = RouterOutputServer;
 
 export const trpc = createTRPCReact<AppRouter>();
 
