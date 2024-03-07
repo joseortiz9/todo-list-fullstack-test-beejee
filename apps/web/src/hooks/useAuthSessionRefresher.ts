@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 
-import { useAuthSession } from './useAuthSession';
+import { STORE_KEY, useAuthSession } from './useAuthSession';
 
 export const useAuthSessionRefresher = () => {
-  const updateStore = () => {
-    useAuthSession.persist.rehydrate();
+  const updateStore = (e: StorageEvent) => {
+    if (e.key === STORE_KEY) {
+      useAuthSession.persist.rehydrate();
+    }
   };
 
   useEffect(() => {
-    document.addEventListener('visibilitychange', updateStore);
-    window.addEventListener('focus', updateStore);
+    window.addEventListener('storage', updateStore);
     return () => {
-      document.removeEventListener('visibilitychange', updateStore);
-      window.removeEventListener('focus', updateStore);
+      window.removeEventListener('storage', updateStore);
     };
   }, []);
 

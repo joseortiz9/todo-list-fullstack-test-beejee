@@ -10,6 +10,8 @@ type AuthSessionProps = {
   logout: () => void;
 };
 
+export const STORE_KEY = 'auth-session';
+
 export const useAuthSession = create<AuthSessionProps>()(
   persist(
     (set) => ({
@@ -29,7 +31,7 @@ export const useAuthSession = create<AuthSessionProps>()(
       },
     }),
     {
-      name: 'auth-session',
+      name: STORE_KEY,
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         session: state.session,
