@@ -4,10 +4,12 @@ import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { type ZodType, z } from 'zod';
 
+import { Button, Stack } from '@/ui';
+
+import { CardContainer } from '@/components/CardContainer';
 import { FormFieldControl } from '@/components/FormField';
 import { useAuthSession, useToast } from '@/hooks';
 import { trpc } from '@/lib/trpc';
-import { Box, Button, Stack, useColorModeValue } from '@/ui';
 
 type FormValues = {
   username: string;
@@ -49,18 +51,16 @@ export const Login = () => {
   };
 
   return (
-    <Box>
-      <Box minW="lg" rounded="lg" boxShadow="lg" bg={useColorModeValue('white', 'gray.700')} p={8}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={4}>
-            <FormFieldControl name="username" control={control} label="username" type="text" />
-            <FormFieldControl name="password" control={control} label="password" type="password" />
-            <Button type="submit" isLoading={isLoading}>
-              Sign in
-            </Button>
-          </Stack>
-        </form>
-      </Box>
-    </Box>
+    <CardContainer minW={{ base: 'full', sm: 'lg' }}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Stack spacing={4}>
+          <FormFieldControl name="username" control={control} label="Username" type="text" />
+          <FormFieldControl name="password" control={control} label="Password" type="password" />
+          <Button type="submit" isLoading={isLoading}>
+            Sign in
+          </Button>
+        </Stack>
+      </form>
+    </CardContainer>
   );
 };

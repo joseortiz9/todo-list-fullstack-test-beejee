@@ -13,24 +13,13 @@
 
       "^@todo-list-fullstack-test(.*)",
 
-      "^@/(.*)",
-
       "^assets(.*)",
 
-      "(.*)styled$",
-      "(.*)styled/(.*)",
+      "^@/ui(.*)",
 
-      "^services$",
-      "(.*)services$",
+      "^@/sharedTypes(.*)",
 
-      "^helpers$",
-      "(.*)helpers$",
-
-      "^utils$",
-      "(.*)utils$",
-
-      "^types(.*)",
-      "(.*)types$",
+      "^@/(.*)",
 
       "^[./]"
    ]

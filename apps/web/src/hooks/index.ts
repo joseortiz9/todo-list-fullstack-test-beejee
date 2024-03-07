@@ -1,2 +1,2 @@
 export { useToast } from './useToast';
-export { useAuthSession } from './useAuthSession';
+export { useAuthSession, useIsAdmin } from './useAuthSession';
