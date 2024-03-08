@@ -3,7 +3,7 @@
    "version": "1.0.0",
    "private": true,
    "scripts": {
-      "prepare": "ts-patch install -s",
+      "prepare": "ts-patch install -s && pnpm prisma:init",
       "prisma:init": "rm -rf .prisma && prisma generate",
       "dev": "pnpm prisma:init && cross-env NODE_ENV=development nodemon ./src/server.ts",
       "start": "pnpm prisma:init && cross-env NODE_ENV=production node dist/src/server.js",

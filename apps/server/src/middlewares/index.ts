@@ -7,7 +7,6 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import { join, resolve } from 'path';
 
-import { isProd } from '@/env';
 import { appRouter } from '@/routers/root';
 import { createContext } from '@/trpc/context';
 
@@ -56,9 +55,7 @@ export class Middlewares {
       }),
     );
 
-    if (isProd) {
-      this.serveWeb(app);
-    }
+    this.serveWeb(app);
   }
 
   private static serveWeb(app: Application) {
