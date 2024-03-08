@@ -2,8 +2,8 @@
 
 ## Stack
 - Monorepo with [Turborepo](https://turborepo.dev/)
-- **Frontend**: React, Vite, TypeScript, Styled Components
-- **Backend**: NodeJS, Express, tRPC, TypeScript
+- **Frontend**: React, Vite, TypeScript, Chakra UI
+- **Backend**: NodeJS, Express, tRPC, TypeScript, JWT
 - GitHub Actions for CI/CD
 
 ## Ports
@@ -15,9 +15,6 @@
 | command                      | description                                                                                     |
 |------------------------------|-------------------------------------------------------------------------------------------------|
 | `pnpm start`                 | Runs the production build of the server (`/server`)                                             |
-| `pnpm pm2:start`             | Runs the server production build as a background process, using pm2 (`/server`)                 |
-| `pnpm pm2:delete`            | Deletes all pm2 processes (`/server`)                                                           |
-| `pnpm pm2:logs`              | Shows logs for pm2 (`/server`)                                                                  |
 | `pnpm dev`                   | Launches apps and bundles all packages in watch mode                                            |
 | `pnpm lint`                  | Performs an eslint check through all workspaces                                                 |
 | `pnpm lint:fix`              | Performs an eslint fix through all workspaces                                                   |
