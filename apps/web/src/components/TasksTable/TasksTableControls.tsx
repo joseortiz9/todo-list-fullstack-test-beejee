@@ -51,11 +51,9 @@ export const TasksTableControls = ({
           <ArrowForwardIcon />
         </Button>
       </Flex>
-      {currentPage && totalPages && (
-        <Text minW="max-content" pl={2} fontSize="sm">
-          Page {currentPage} of {totalPages}
-        </Text>
-      )}
+      <Text minW="max-content" pl={2} fontSize="sm">
+        Page {currentPage || '-'} of {totalPages || '-'}
+      </Text>
     </Flex>
   );
 };
