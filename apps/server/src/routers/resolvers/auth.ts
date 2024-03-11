@@ -18,9 +18,7 @@ export const authRouter = (authService: AuthService) => {
             token,
           };
         }),
-      logout: protectedProcedure.mutation(({ ctx }) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+      logout: publicProcedure.mutation(({ ctx }) => {
         ctx.session = null;
         return { ok: true };
       }),

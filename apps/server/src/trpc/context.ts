@@ -1,4 +1,3 @@
-import type { inferAsyncReturnType } from '@trpc/server';
 import type * as trpcExpress from '@trpc/server/adapters/express';
 
 import { tokenToSessionData } from '@/parsers/tokenToSessionData';
@@ -13,4 +12,4 @@ export const createContext = ({ req }: trpcExpress.CreateExpressContextOptions) 
   };
 };
 
-export type Context = inferAsyncReturnType<typeof createContext>;
+export type Context = ReturnType<typeof createContext>;
