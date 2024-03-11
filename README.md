@@ -25,3 +25,9 @@
 | `pnpm build`                 | Builds all apps                                                                                 |
 | `pnpm build:lib`             | Bundles all packages                                                                            |
 | `pnpm postinstall`           | Ensures that local or CI environment is ready after installing packages                         |
+
+## TODO
+- [ ] Abstract DB implementation to repository pattern
+- [ ] Add unit tests for server
+- [ ] Add unit tests for web
+- [ ] Add CI/CD for auto deployment
