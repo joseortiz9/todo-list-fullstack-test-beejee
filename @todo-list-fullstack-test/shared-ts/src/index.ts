@@ -1,2 +1,2 @@
-export * from './dto/authDto';
-export * from './dto/tasksDto';
+export * from './auth';
+export * from './tasks';

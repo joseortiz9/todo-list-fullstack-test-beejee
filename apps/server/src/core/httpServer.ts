@@ -1,16 +1,12 @@
-import express from 'express';
+import { type Application } from 'express';
 import http from 'http';
 
 import { PORT } from '@/env';
 
-export class HttpServer {
-  public static create() {
-    const app = express();
-
+export const initHttpServer = (app: Application) => {
+  const start = () => {
     const server = http.createServer(app);
-
     server.listen(PORT, () => console.log(`🚀 Server has launched`));
-
-    return { app };
-  }
-}
+  };
+  return { start };
+};

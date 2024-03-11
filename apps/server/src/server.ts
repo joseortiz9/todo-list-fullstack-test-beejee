@@ -1,8 +1,10 @@
 import 'dotenv/config';
+import express from 'express';
 
-import { HttpServer } from '@/core';
-import { Middlewares } from '@/middlewares';
+import { configureExpress, initHttpServer } from '@/core';
 
-const { app } = HttpServer.create();
+const app = express();
 
-Middlewares.config(app);
+configureExpress(app).config();
+
+initHttpServer(app).start();

@@ -1,1 +1,2 @@
-export { HttpServer } from './httpServer';
+export { initHttpServer } from './httpServer';
+export { configureExpress } from './expressApp';

@@ -1,15 +1,13 @@
 import type { inferAsyncReturnType } from '@trpc/server';
 import type * as trpcExpress from '@trpc/server/adapters/express';
 
-import { DatabaseService, JwtService } from '@/services';
+import { tokenToSessionData } from '@/parsers/tokenToSessionData';
 
-export const createContext = async ({ req }: trpcExpress.CreateExpressContextOptions) => {
+export const createContext = ({ req }: trpcExpress.CreateExpressContextOptions) => {
   const sessionToken = req.headers['authorization']?.split(' ')[1];
-  const session = await JwtService.parseSessionByToken(sessionToken);
+  const session = tokenToSessionData(sessionToken);
   const cacheControl = req.headers['x-cache-control'];
-  const db = DatabaseService.getDB();
   return {
-    db,
     session,
     cacheControl,
   };
